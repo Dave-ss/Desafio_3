@@ -1,28 +1,63 @@
 require 'csv'
-require 'pry'
-
+# require 'pry'
+require_relative 'Aluno'
 class Leitor
 
 
   def initialize
-    @file = CSV.parse(File.read('C:\Users\davi2\RubymineProjects\Desafio_3\notas.csv'), headers: true)
+    @arquivo = CSV.parse(File.read('notas.csv'), headers: true)
     rescue Exception => exception
       raise Exception, "Falha ao ler o arquivo #{exception}"
+      exit(1)
   end
 
-  # binding.pry
+  attr_reader :arquivo
 
-  def ler
-    CSV.foreach(file,header: true) do|row|
-      next if row.empty?
-      puts row["MATRICULA"], row["COD_DISCIPLINA"],
-           row["COD_CURSO"], row["NOTA"],
-           row["CARGA_HORARIA"], row["ANO_SEMESTRE"]
+  def separar_aluno
+
+    File.open('notas.csv') do |file|
+      aux = CSV.parse(File.read(file, encoding: 'bom|utf-8'), col_sep: ',', headers: true)
+      aux.group_by { |row| row['MATRICULA'] }
+      i = 0
+      vet = []
+      alunos = []
+      #laço para criar os objetos aluno com suas respectivas turmas cursadas
+      while aux[i] != nil
+        if i > 0
+          if aux[i+1] == nil or aux[i]["MATRICULA"] == aux[i-1]["MATRICULA"]
+            vet << aux[i]
+          else
+            p vet[0]['MATRICULA']
+            aluno = Aluno.new(vet)
+            alunos << aluno
+            vet = []
+          end
+        else
+          if aux[i+1] == nil or aux[i]["MATRICULA"] == aux[i+1]["MATRICULA"]
+
+            vet << aux[i]
+          else
+            p vet[0]['MATRICULA']
+            aluno = Aluno.new(vet)
+            alunos << aluno
+            vet = []
+          end
+        end
+        i += 1
       end
+    end
   end
 
-  attr_reader :file
+  def separar_curso
+    aux = CSV.parse(File.read(file, encoding: 'bom|utf-8'), col_sep: ',', headers: true)
+    aux.group_by { |row| row['COD_CURSO'] }
+
+
+
+  end
+
+
 end
 
 p = Leitor.new()
-p.ler
+p.separar_aluno
