@@ -1,32 +1,21 @@
 # require 'pry'
+require_relative 'CalculaCr'
 class Aluno
-  def initialize(array)
-    @matricula = array[0]["MATRICULA"]
+  def initialize(mat, historico)
+    @matricula = mat
     @disciplinas = []
-    @total_carga = 0
-    # calcula_carga(array)
-    insere(array)
-    p total_carga
-    # @disciplinas[:disciplina["COD_DISCIPLINA"]] = {disciplina[:"COD_DISCIPLINA"] = disciplina["COD_DISCIPLINA"], disciplina[:"COD_CURSO"] = disciplina["COD_CURSO"]}
-
-  end
+    @total_carga_horaria = 0
+    insere(historico)
+    calcula_carga(disciplinas)
+    end
 
   attr_reader :matricula
   attr_reader :disciplinas
-  attr_reader :total_carga
+  attr_reader :total_carga_horaria
 
-
-  def printa
-    # disciplinas.each do |row|
-    #   p row
-    p disciplinas
-
-
+  def calcula_cr()
+    p "#{matricula} - #{CalculaCr.new(total_carga_horaria).calcula(disciplinas)}"
   end
-
-  # def call
-  #   printa
-  # end
 
   private
   def insere(array)
@@ -37,8 +26,7 @@ class Aluno
 
   def calcula_carga(array)
     array.each {|h|
-      p h[1]
-      # @total_carga += h[4].to_i
+      @total_carga_horaria += h[3].to_i
     }
 
   end
