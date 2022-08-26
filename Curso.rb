@@ -1,4 +1,10 @@
 require_relative 'Calculadora'
+
+=begin
+classe para instanciar o objeto curso com
+os atributos codigo, alunos, e o objeto calculadora.
+sendo possivel calcular a media do curso metodos da calculadora
+=end
 class Curso
   def initialize(cod, alunos)
     @cod = cod

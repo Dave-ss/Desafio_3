@@ -1,13 +1,18 @@
 require_relative 'Calculadora'
 
+=begin
+classe para instanciar o objeto aluno com
+os atributos matricula, disciplina, e o objeto calculadora.
+sendo possivel calcular o cr e a carga horaria atraves dos
+metodos da calculadora
+=end
 
 class Aluno
-
   def initialize(matricula, historico)
     @matricula = matricula
     @disciplinas = historico
-    @cargaHoraria =
-      @cr = 0
+    @cargaHoraria = 0
+    @cr = 0
     @c = Calculadora.new()
   end
 

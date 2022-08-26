@@ -1,8 +1,10 @@
-
 require_relative 'Aluno'
 require_relative 'Curso'
 
-
+=begin
+classe utilizada para tratar os objetos aluno e curso onde eles ficam
+armazenados em um vetor para aluno e outro para cursos como atributo da Univerisdade
+=end
 class Univesidade
   def initialize()
     @calculadora = Calculadora.new
