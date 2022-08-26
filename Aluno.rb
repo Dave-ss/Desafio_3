@@ -1,33 +1,29 @@
-# require 'pry'
-require_relative 'CalculaCr'
-class Aluno
-  def initialize(mat, historico)
-    @matricula = mat
-    @disciplinas = []
-    @total_carga_horaria = 0
-    insere(historico)
-    calcula_carga(disciplinas)
-    end
+require_relative 'Calculadora'
 
+
+class Aluno
+
+  def initialize(matricula, historico)
+    @matricula = matricula
+    @disciplinas = historico
+    @cargaHoraria =
+      @cr = 0
+    @c = Calculadora.new()
+  end
+
+  attr_reader :c
+  attr_reader :cr
   attr_reader :matricula
   attr_reader :disciplinas
-  attr_reader :total_carga_horaria
+  attr_reader :cargaHoraria
 
-  def calcula_cr()
-    p "#{matricula} - #{CalculaCr.new(total_carga_horaria).calcula(disciplinas)}"
+  def calcula_cr
+    @cargaHoraria = c.calcula_ch(disciplinas)
+    @cr = c.calcula_cr(disciplinas, cargaHoraria)
   end
 
-  private
-  def insere(array)
-    array.each { |i|
-      disciplinas << i[1..5]
-    }
+  def printa_cr
+    puts "#{matricula} - #{cr}"
   end
 
-  def calcula_carga(array)
-    array.each {|h|
-      @total_carga_horaria += h[3].to_i
-    }
-
-  end
 end

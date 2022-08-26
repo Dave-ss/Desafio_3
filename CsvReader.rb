@@ -6,9 +6,9 @@ class Leitor
     @universidade = Univesidade.new
     @nome_arquivo = nome_arquivo
     @arquivo =  CSV.parse(File.read(nome_arquivo), headers: true)
-    rescue Exception => exception
-      raise Exception, "Falha ao ler o arquivo #{exception}"
-      exit(1)
+  rescue Exception => exception
+    raise Exception, "Falha ao ler o arquivo #{exception}"
+    exit(1)
   end
 
   attr_reader :nome_arquivo
@@ -27,7 +27,7 @@ class Leitor
         teste.each { |x,y| alunos << x
         }
         universidade.insere_curso(k, alunos)
-        }
+      }
     end
   end
 
@@ -42,3 +42,6 @@ class Leitor
   end
 
 end
+
+
+
