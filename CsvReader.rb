@@ -36,7 +36,7 @@ class Leitor
     universidade.printa_cr
   end
 
-  def media_cursos
+  def printa_media_cursos
     universidade.calcula_cr
     universidade.media_cursos
   end
