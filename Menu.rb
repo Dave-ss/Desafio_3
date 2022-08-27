@@ -12,7 +12,7 @@ def menu_inicial()
 end
 
 def menu_1()
-  puts"|  Calculando  |"
+  puts"|   Selec Arq  |"
   puts"|--------------|"
   puts"|  1-Inserir o |"
   puts"|    arquivo   |"
