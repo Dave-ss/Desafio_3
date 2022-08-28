@@ -1,4 +1,4 @@
-require_relative 'Calculadora'
+require_relative 'calculadora'
 
 =begin
 classe para instanciar o objeto aluno com

@@ -1,5 +1,5 @@
 require 'csv'
-require_relative 'Universidade'
+require_relative 'universidade'
 =begin
 classe para fazer a leitura do arquivo no formato .csv
 onde é feito o tratamento dos dados para a criação dos alunos e dos cursos

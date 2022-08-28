@@ -1,4 +1,4 @@
-require_relative 'CsvReader'
+require_relative 'csv_reader'
 =begin
 classe principal utilizada para exibir o menu para o usuario e chamar os respectivos metodos
 =end

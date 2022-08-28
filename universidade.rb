@@ -1,5 +1,5 @@
-require_relative 'Aluno'
-require_relative 'Curso'
+require_relative 'aluno'
+require_relative 'curso'
 
 =begin
 classe utilizada para tratar os objetos aluno e curso onde eles ficam
